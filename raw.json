@@ -1,0 +1,10 @@
+{
+  "total_apis": 3,
+  "data": [
+    {
+      "endpoint": "/api/products/",
+      "method": "GET",
+      "hit_count": 10
+    }
+  ]
+}
