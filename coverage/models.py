@@ -10,5 +10,9 @@ class APICoverage(models.Model):
 
     last_hit = models.DateTimeField(auto_now=True)
 
+    average_response_time = models.FloatField(default=0.0)
+
+    slowest_response_time = models.FloatField(default=0.0)
+
     def __str__(self):
         return f"{self.endpoint} ({self.hit_count})"
