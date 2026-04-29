@@ -1,3 +1,4 @@
+import time
 from .utils import track_api_hit
 
 class APICoverageMiddleware:
@@ -6,11 +7,17 @@ class APICoverageMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        start_time = time.time()
 
         response = self.get_response(request)
 
-        # track only API routes
+        execution_time = round(time.time() - start_time, 4)
+
         if request.path.startswith("/api/"):
-            track_api_hit(request.path, request.method)
+            track_api_hit(
+                request.path,
+                request.method,
+                execution_time
+            )
 
         return response
