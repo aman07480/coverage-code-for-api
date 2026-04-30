@@ -32,3 +32,20 @@ def top_used_apis(request):
     return Response({
         "top_apis": list(data)
     })
+
+    @api_view(["GET"])
+def slow_apis(request):
+
+    data = APICoverage.objects.order_by(
+        "-average_response_time"
+    ).values(
+        "endpoint",
+        "method",
+        "average_response_time",
+        "slowest_response_time",
+        "hit_count"
+    )[:10]
+
+    return Response({
+        "slowest_apis": list(data)
+    })
