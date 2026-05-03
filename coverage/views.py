@@ -33,7 +33,7 @@ def top_used_apis(request):
         "top_apis": list(data)
     })
 
-    @api_view(["GET"])
+@api_view(["GET"])
 def slow_apis(request):
 
     data = APICoverage.objects.order_by(
