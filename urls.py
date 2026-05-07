@@ -10,5 +10,7 @@ urlpatterns = [
     path("coverage/", api_coverage_list),
     path("coverage/unused/", unused_apis),
     path("coverage/top/", top_used_apis),
+    path("coverage/failed/", failed_apis),
+    path("coverage/error-rate/", error_rate),
 
 ]
